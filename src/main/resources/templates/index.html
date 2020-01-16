@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Library Application</title>
+<link rel="stylesheet" href="../static/bootstrap.min.css"
+	th:href="@{/bootstrap.min.css}" />
+
+<script type="text/javascript" src="/static/jquery-3.4.1.min.js" th:src="@{/jquery-3.4.1.min.js}"></script>
+<script type="text/javascript" src="/static/bootstrap.min.js" th:src="@{/bootstrap.min.js}"></script>
+<script type="text/javascript" src="/static/angular.min.js" th:src="@{/angular.min.js}"></script>
+<script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+<script type="text/javascript" src="/static/app/book.controller.js" th:src="@{/app/book.controller.js}"></script>
+<script>
+	$('#myModal').on('shown.bs.modal', function() {
+		$('#myInput').trigger('focus')
+	})
+</script>
+
+</head>
+<body ng-app="app" ng-controller="BookController as vm">
+	<!-- Welcome to application title -->
+	<div class="jumbotron  container-fluid" style="color:whitesmoke; background:darkcyan">
+		<h1 class="text-center">Welcome to Library Application</h1>
+	</div>
+	
+	<!-- Table that display all books in database -->
+	<table class="table container">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">Author</th>
+				<th scope="col">Price</th>
+				<!-- Input to filter books by name, author or price -->
+				<th scope="col" style="width: 90px"><label>Search: <input ng-model="searchText"></label></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="book in vm.books | filter:searchText">
+				<td>{{book.bookName}}</td>
+				<td>{{book.autor}}</td>
+				<td>{{book.price}}</td>
+				<!-- Button which delete book from database -->
+				<td>
+					<button class="btn btn-danger" ng-click="vm.deleteBook(book.id)">Delete</button>
+				</td>
+		
+			</tr>
+			<tr>
+				<!-- Button which display form for adding a new book-->
+				<td>
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-target="#exampleModal">Add new book</button>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+
+		</tbody>
+
+	</table>
+	<!-- Modal - form with input fields for adding a new book -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add new Book</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table>
+						<tr>
+							<td width="100">Name:</td>
+							<td><input type="text" id="id" ng-model="book.bookName" /></td>
+						</tr>
+						<tr>
+							<td width="100">Author:</td>
+							<td><input type="text" id="name" ng-model="book.autor" /></td>
+						</tr>
+						<tr>
+							<td width="100">Price:</td>
+							<td><input type="text" id="age" ng-model="book.price" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+
+					<button type="button"
+						ng-click="vm.addUser(book.bookName,book.autor,book.price)"
+						class="btn btn-primary">Add new book</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
