@@ -46,6 +46,13 @@ public class BookController {
 		return bookRepository.findAll();
 	}
 	
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public Book findById(@PathVariable int id) {
+		
+		
+	return bookRepository.findById(id).get();
+	}
 	
+
 
 }

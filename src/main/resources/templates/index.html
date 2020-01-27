@@ -32,6 +32,7 @@
 				<th scope="col">Name</th>
 				<th scope="col">Author</th>
 				<th scope="col">Price</th>
+				
 				<!-- Input to filter books by name, author or price -->
 				<th scope="col" style="width: 90px"><label>Search: <input ng-model="searchText"></label></th>
 			</tr>
@@ -53,11 +54,12 @@
 					<button type="button" class="btn btn-primary" data-toggle="modal"
 						data-target="#exampleModal">Add new book</button>
 				</td>
-				<td></td>
+				<td>
+				</td>
 				<td></td>
 				<td></td>
 			</tr>
-
+			
 		</tbody>
 
 	</table>
@@ -77,27 +79,28 @@
 					<table>
 						<tr>
 							<td width="100">Name:</td>
-							<td><input type="text" id="id" ng-model="book.bookName" /></td>
+							<td><input type="text" id="name" ng-model="book.bookName" /></td>
 						</tr>
 						<tr>
 							<td width="100">Author:</td>
-							<td><input type="text" id="name" ng-model="book.autor" /></td>
+							<td><input type="text" id="autor" ng-model="book.autor" /></td>
 						</tr>
 						<tr>
 							<td width="100">Price:</td>
-							<td><input type="text" id="age" ng-model="book.price" /></td>
+							<td><input type="text" id="price" ng-model="book.price" /></td>
 						</tr>
 					</table>
 				</div>
 				<div class="modal-footer">
 
 					<button type="button"
-						ng-click="vm.addUser(book.bookName,book.autor,book.price)"
+						ng-click="vm.addBook(book.bookName,book.autor,book.price)"
 						class="btn btn-primary">Add new book</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	
 </body>
 </html>

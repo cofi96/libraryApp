@@ -6,4 +6,6 @@ import com.LibraryApp.models.Book;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
+
+	
 }

@@ -16,8 +16,7 @@
 		vm.books = [];
 		vm.getAll=getAll;
 		vm.deleteBook=deleteBook;
-		vm.addUser=addUser;
-		
+		vm.addBook=addBook;
 		init();
 		
 		
@@ -47,7 +46,7 @@
 			});
 		}
 		
-		function addUser(name, autor,price) {
+		function addBook(name, autor,price) {
 			
     		return $http({
         		method : 'POST',
@@ -62,7 +61,6 @@
 			});
 			
 		}
-		
 
 	}
 
